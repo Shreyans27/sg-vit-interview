@@ -1,0 +1,90 @@
+### CODE 1 - Check for invalid Paranthesis
+
+stack = []
+ans = 0
+string = "(()("
+for i in string:
+    
+    if i == "(":
+        stack.append("(")
+    
+    elif i == ")":
+        if len(stack) == 0:
+            ans += 1
+        elif stack[-1] == "(":
+            stack.pop(-1)
+        else:
+            ans += 1
+
+print(len(stack))
+
+
+
+### CODE 2 - Find the max value
+
+a = "5-3-1"
+b = "1-1-10000000"
+c = "3-1-2"
+
+m = 0
+ans = ""
+
+one = a.split("-")
+two = b.split("-")
+three = c.split("-")
+
+print(one)
+print(two)
+print(three)
+
+age1 = int(one[0])*365 + int(one[1])*30 + int(one[2])
+age2 = int(two[0])*365 + int(two[1])*30 + int(two[2])
+age3 = int(three[0])*365 + int(three[1])*30 + int(three[2])
+
+if age1 > age2:
+    if age1 > age3:
+        m = age1
+        ans = one
+    else:
+        m = age3
+        ans = three
+
+if age2 > age1:
+    if age2 > age3:
+        m = age2
+        ans = two
+    else:
+        m = age3
+        ans = three
+    
+print("max value is ", ans, " with number of days = ", m)
+
+
+
+### CODE 3 - Remove "-" and " "
+
+input = "1-23-4-56-7-8-9"
+check = [" ","-"]
+
+final = ""
+count = 0
+for i in input:
+    if i in check:
+        continue
+    else:
+        if final and count == 3:
+            final = final + " " + i
+            count = 1
+        else:
+            final = final + i
+            count += 1
+print(final)
+
+
+
+
+### CODE 4 - SQL
+
+select count(id) as count, month
+from employees
+group by joiningdate
